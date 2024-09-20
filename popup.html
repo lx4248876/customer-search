@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Information Extractor</title>
+    <style>
+        body {
+            width: 600px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .info-section {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-type {
+            width: 100px;
+            font-weight: bold;
+        }
+
+        .info-value {
+            flex-grow: 1;
+            margin: 0 10px;
+            word-break: break-all;
+        }
+
+        .copy-btn, #refreshBtn, #exportBtn {
+            cursor: pointer;
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-btn:hover, #refreshBtn:hover, #exportBtn:hover {
+            background-color: #45a049;
+        }
+
+        #refreshBtn, #exportBtn {
+            margin-bottom: 20px;
+        }
+
+        #status {
+            color: #666;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        #loadingIndicator {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .filter-section {
+            margin-bottom: 15px;
+        }
+
+        .sort-section {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<button id="refreshBtn">Refresh Page</button>
+<button id="exportBtn">Export Information</button>
+<button id="copyAllBtn">Copy All</button>
+<div class="filter-section">
+    <label for="filterType">Filter by type:</label>
+    <select id="filterType">
+        <option value="all">All</option>
+        <option value="emails">Emails</option>
+        <option value="companies">Companies</option>
+        <option value="titles">Titles</option>
+        <option value="phones">Phones</option>
+        <option value="socialMedia">Social Media</option>
+        <option value="urls">URLs</option>
+        <option value="addresses">Addresses</option>
+        <option value="websites">Websites</option>
+        <!-- 移除 Names 选项 -->
+    </select>
+</div>
+<div class="sort-section">
+    <label for="sortOrder">Sort order:</label>
+    <select id="sortOrder">
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+    </select>
+</div>
+<div id="loadingIndicator">Loading...</div>
+<div class="info-section" id="infoList">
+    <h2>Extracted Information:</h2>
+</div>
+<div id="status"></div>
+<script src="popup.js"></script>
+</body>
+</html>
